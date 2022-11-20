@@ -10,9 +10,6 @@ import (
 func New(version string) func() *schema.Provider {
     return func() *schema.Provider {
         p := &schema.Provider{
-            DataSourcesMap: map[string]*schema.Resource{
-                "http-b64": dataSourceScaffolding(),
-            },
             ResourcesMap: map[string]*schema.Resource{
                 "http-b64": resourceUser(),
             },
