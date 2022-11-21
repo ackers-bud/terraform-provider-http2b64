@@ -30,13 +30,13 @@ func resourceUser() *schema.Resource {
             "status_code": {
                 Description: "the returned http status code",
                 Type:        schema.TypeInt,
-                Optional:    true,
+                Computed:    true,
             },
 
             "response_body_base64": {
                 Description: "The Returned body base64 encoded",
                 Type:        schema.TypeString,
-                Optional:    true,
+                Computed:    true,
             },
         },
     }
