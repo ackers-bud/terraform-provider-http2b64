@@ -1,3 +1,4 @@
 .idea/*
 testdata/*
 bin/*
+terraform.tfstate
