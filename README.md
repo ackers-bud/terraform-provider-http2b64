@@ -1,13 +1,13 @@
-# Terraform Provider: http2b64
+# Terraform Provider-http2b64
 
-This provider requests an URL and will take whatever the URL serves saving it as a base64 encode string.  Written to be used 
+This provider requests an URL and will take whatever the URL serves saving it as a base64 encoded string.  Written to be used 
 with https://github.com/Ackers-BUD/terraform-provider-zip2b64 were the resource is a zip file. 
 
 ### Example Usage 
 
 ```
 resource "http-b64" "provisioningzipfile" {
-    provider = http2b64
+    provider = http-b64
     url      = "http://<url-to-a-zipfile>.zip"
 }
 
@@ -18,19 +18,33 @@ resource "zip2b64" "extractedfile" {
 }
 ```
 
-## http-b64 computed values
+## http-b64 values
+### "url"
+The URL of the request
 
-### "id"
+### "id" (computed)
 Set as the URL of the Request. 
 
-### "status_code" 
+### "status_code" (computed)
 The Status code of the http request.  Useful if determining if file isn't found.  ALL request bodies regardless of http code are converted to base64. 
 
-### "response_body_base64"
+### "response_body_base64" (computed)
 A base64 representation of the the responce. 
 
+## zip2b64 values
 
-See example usage below
+### "base64file" (required)
+A base64 string respresenting a zip file
+
+### "filename" (required)
+The filename in the zip file looking to extract
+
+### "id" (computed)
+Typically the filename
+
+### "filecontents_base64" (computed)
+A base64 representation of the extracted file
+
 
 ## Requirements
 
@@ -84,29 +98,3 @@ this every time you make changes to the provider locally.
 Then, setup your environment following [these instructions](https://www.terraform.io/plugin/debugging#terraform-cli-development-overrides)
 to make your local terraform use your local build.
 
-### Testing GitHub Actions
-
-This project uses [GitHub Actions](https://docs.github.com/en/actions/automating-builds-and-tests) to realize its CI.
-
-Sometimes it might be helpful to locally reproduce the behaviour of those actions,
-and for this we use [act](https://github.com/nektos/act). Once installed, you can _simulate_ the actions executed
-when opening a PR with:
-
-```shell
-# List of workflows for the 'pull_request' action
-$ act -l pull_request
-
-# Execute the workflows associated with the `pull_request' action 
-$ act pull_request
-```
-
-## Releasing
-
-The release process is automated via GitHub Actions, and it's defined in the Workflow
-[release.yml](./.github/workflows/release.yml).
-
-Each release is cut by pushing a [semantically versioned](https://semver.org/) tag to the default branch.
-
-## License
-
-[Mozilla Public License v2.0](./LICENSE)
