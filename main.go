@@ -1,8 +1,8 @@
 package main
 
 import (
-    "github.com/ackers-bud/terraform-provider-http2b64/provider"
-    "github.com/hashicorp/terraform-plugin-sdk/v2/plugin"
+	"github.com/ackers-bud/terraform-provider-http2b64/provider"
+	"github.com/hashicorp/terraform-plugin-sdk/v2/plugin"
 )
 
 // Run "go generate" to format example terraform files and generate the docs for the registry/website
@@ -16,6 +16,6 @@ import (
 //go:generate go run github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs
 
 func main() {
-    plugin.Serve(&plugin.ServeOpts{
-        ProviderFunc: provider.New("")})
+	plugin.Serve(&plugin.ServeOpts{
+		ProviderFunc: provider.New("")})
 }

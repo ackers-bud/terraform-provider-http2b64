@@ -7,7 +7,7 @@ build:
 	@go build -o bin/terraform-provider-http2b64
 
 lint:
-	golangci-lint run
+	@golangci-lint run
 
 fmt:
 	gofmt -s -w -e .
