@@ -12,7 +12,7 @@ func New(version string) func() *schema.Provider {
         p := &schema.Provider{
 
             ResourcesMap: map[string]*schema.Resource{
-                "http2b64": resourcehttpb64(),
+                "http2b64": resourcehttp2b64(),
             },
         }
 
