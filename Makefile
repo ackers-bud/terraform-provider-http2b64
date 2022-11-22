@@ -6,11 +6,11 @@ NOW := $(shell date -u +'%Y%m%d-%H%M%S')
 build:
 	@go build -o bin/terraform-provider-http2b64
 
-lint:
+lint: fmt
 	@golangci-lint run
 
 fmt:
-	gofmt -s -w -e .
+	@gofmt -s -w -e .
 
 test:
 	go test -v -cover -timeout=120s -parallel=4 ./...

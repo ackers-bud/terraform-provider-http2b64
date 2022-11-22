@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"github.com/ackers-bud/terraform-provider-http2b64/client"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
@@ -42,32 +41,24 @@ func resourcehttpb64() *schema.Resource {
 	}
 }
 
+//nolint:ineffassign
 func Create(d *schema.ResourceData, meta interface{}) error {
-	CreateDiagnostics := diag.Diagnostics{}
+
 	url := d.Get("url").(string)
 
 	responseBody, statusCode, err := client.GetFile(url)
 	if err != nil {
-		CreateDiagnostics = append(CreateDiagnostics, diag.Diagnostic{
-			Summary: fmt.Sprintf("Error Getting %v", err),
-			Detail:  "Error",
-		})
+		return fmt.Errorf("error Getting resource '%v'", err)
 	}
 
 	err = d.Set("status_code", statusCode)
 	if err != nil {
-		CreateDiagnostics = append(CreateDiagnostics, diag.Diagnostic{
-			Summary: fmt.Sprintf("Error Getting %v", err),
-			Detail:  "Error",
-		})
+		return fmt.Errorf("error Setting status_code '%v'", err)
 	}
 
 	err = d.Set("response_body_base64", responseBody)
 	if err != nil {
-		CreateDiagnostics = append(CreateDiagnostics, diag.Diagnostic{
-			Summary: fmt.Sprintf("Error Getting %v", err),
-			Detail:  "Error",
-		})
+		return fmt.Errorf("error Setting response_body_base64 '%v'", err)
 	}
 
 	d.SetId(url)
