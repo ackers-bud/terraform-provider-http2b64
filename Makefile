@@ -21,7 +21,7 @@ testacc:
 generate:
 	@go generate
 
-commit:
+commit: fmt generate test
 	@git add .
 	@git commit -a -m "Update $(NOW)"
 	@git push
