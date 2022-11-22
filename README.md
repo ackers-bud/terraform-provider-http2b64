@@ -1,6 +1,5 @@
 # Terraform Provider-http2b64
 
-
 https://github.com/Ackers-BUD/terraform-provider-zip2b64 and Provider https://github.com/Ackers-BUD/terraform-provider-http2b64 were written to
 work together. The provider http2b64 requests an URL and will take whatever the URL serves saving it as a base64 encoded string.  zip2b64 then takes
 this encoded value as a zip file and extracts a specifc file from the archive.
