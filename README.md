@@ -1,7 +1,12 @@
 # Terraform Provider-http2b64
 
-This provider requests an URL and will take whatever the URL serves saving it as a base64 encoded string.  Written to be used 
-with https://github.com/Ackers-BUD/terraform-provider-zip2b64 were the resource is a zip file. 
+
+https://github.com/Ackers-BUD/terraform-provider-zip2b64 and Provider https://github.com/Ackers-BUD/terraform-provider-http2b64 were written to
+work together. The provider http2b64 requests an URL and will take whatever the URL serves saving it as a base64 encoded string.  zip2b64 then takes
+this encoded value as a zip file and extracts a specifc file from the archive.
+
+This was written as a specific suppiler, provides the provisioning information to a service as a zip file on every invocation of that service.
+The zip file contains a range of details needed to use the service.  Each needs to be used in terraform.
 
 ### Example Usage 
 
