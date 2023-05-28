@@ -10,8 +10,8 @@ The zip file contains a range of details needed to use the service.  Each needs 
 ### Example Usage 
 
 ```
-resource "http-b64" "provisioningzipfile" {
-    provider = http-b64
+resource "http2b64" "provisioningzipfile" {
+    provider = http2b64
     url      = "http://<url-to-a-zipfile>.zip"
 }
 
@@ -22,7 +22,7 @@ resource "zip2b64" "extractedfile" {
 }
 ```
 
-## http-b64 values
+## http2b64 values
 ### "url"
 The URL of the request
 
